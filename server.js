@@ -28,8 +28,10 @@ app.post("/create-payment-intent", async (req, res) => {
     });
 
     res.status(200).send({
-      clientSecret: paymentIntent.client_secret,
-    });
+  client_secret: paymentIntent.client_secret,
+  id: paymentIntent.id,
+});
+
   } catch (error) {
     console.error("❌ Error creating payment intent:", error);
     res.status(500).send({ error: error.message });
