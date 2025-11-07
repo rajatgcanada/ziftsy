@@ -27,14 +27,14 @@ app.post("/create-payment-intent", async (req, res) => {
       automatic_payment_methods: { enabled: true },
     });
 
-    res.status(200).send({
+    res.status(200).json({
   client_secret: paymentIntent.client_secret,
   id: paymentIntent.id,
 });
 
   } catch (error) {
     console.error("❌ Error creating payment intent:", error);
-    res.status(500).send({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 });
 
